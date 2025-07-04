@@ -933,11 +933,11 @@ class ContactManager {
   }
 
   loadPreviousActions() {
-    // Sample data for previous actions
+    // Sample data for previous actions matching the image design
     const sampleActions = [
       {
         id: 1,
-        datetime: "2024-01-15 14:30:22",
+        datetime: "2024-01-15 14:30",
         action: "Troca de agente",
         details: 'De "João Silva" para "Maria Santos"',
         contactsCount: 25,
@@ -946,7 +946,7 @@ class ContactManager {
       },
       {
         id: 2,
-        datetime: "2024-01-15 10:15:45",
+        datetime: "2024-01-15 10:15",
         action: "Adição de tag",
         details: 'Tag "VIP" adicionada',
         contactsCount: 12,
@@ -955,7 +955,7 @@ class ContactManager {
       },
       {
         id: 3,
-        datetime: "2024-01-14 16:22:18",
+        datetime: "2024-01-14 16:22",
         action: "Troca de status",
         details: 'Status alterado para "Resolvida"',
         contactsCount: 8,
@@ -964,7 +964,7 @@ class ContactManager {
       },
       {
         id: 4,
-        datetime: "2024-01-14 09:45:12",
+        datetime: "2024-01-14 09:45",
         action: "Mensagem em massa",
         details: "Mensagem promocional enviada",
         contactsCount: 156,
@@ -973,7 +973,7 @@ class ContactManager {
       },
       {
         id: 5,
-        datetime: "2024-01-13 13:28:55",
+        datetime: "2024-01-13 13:28",
         action: "Troca de pipeline",
         details: 'Movido para "Qualificado"',
         contactsCount: 3,
@@ -998,9 +998,9 @@ class ContactManager {
     if (actions.length === 0) {
       tbody.innerHTML = `
                 <tr>
-                    <td colspan="6" class="text-center" style="padding: var(--space-20);">
-                        <i class="fas fa-inbox" style="color: var(--color-text-secondary); margin-bottom: var(--space-8);"></i><br>
-                        Nenhuma ação encontrada para os filtros selecionados
+                    <td colspan="6" class="text-center" style="padding: 40px;">
+                        <i class="fas fa-inbox" style="color: #9ca3af; font-size: 24px; margin-bottom: 12px;"></i><br>
+                        <span style="color: #6b7280; font-size: 14px;">Nenhuma ação encontrada para os filtros selecionados</span>
                     </td>
                 </tr>
             `;
@@ -1013,10 +1013,8 @@ class ContactManager {
             <tr>
                 <td>${this.formatDateTime(action.datetime)}</td>
                 <td>
-                    <strong>${action.action}</strong><br>
-                    <small style="color: var(--color-text-secondary);">${
-                      action.details
-                    }</small>
+                    <div class="action-title">${action.action}</div>
+                    <div class="action-details">${action.details}</div>
                 </td>
                 <td>${action.contactsCount} contatos</td>
                 <td>${action.user}</td>
