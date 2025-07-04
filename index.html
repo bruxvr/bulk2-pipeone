@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Filtros e Ações em Massa</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Central de Filtros e Ações em Massa</h1>
+
+      <!-- Seção de Filtros -->
+      <div class="card">
+        <div class="card__header">
+          <h2>Filtros</h2>
+        </div>
+        <div class="card__body">
+          <form id="filtersForm" class="filters-grid">
+            <div class="form-group">
+              <label class="form-label">Contact Rating</label>
+              <select class="form-control" id="rating">
+                <option value="">Selecione...</option>
+                <option value="1">1 estrela</option>
+                <option value="2">2 estrelas</option>
+                <option value="3">3 estrelas</option>
+                <option value="4">4 estrelas</option>
+                <option value="5">5 estrelas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                placeholder="Digite o nome"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Digite o e-mail"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Telefone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telefone"
+                placeholder="Digite o telefone"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Country Code</label>
+              <select class="form-control" id="countryCode">
+                <option value="">Selecione...</option>
+                <option value="+55">+55 - Brasil</option>
+                <option value="+1">+1 - Estados Unidos</option>
+                <option value="+54">+54 - Argentina</option>
+                <option value="+56">+56 - Chile</option>
+                <option value="+49">+49 - Alemanha</option>
+                <option value="+33">+33 - França</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Idade Mínima</label>
+              <input
+                type="number"
+                class="form-control"
+                id="idadeMin"
+                placeholder="Mín"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Idade Máxima</label>
+              <input
+                type="number"
+                class="form-control"
+                id="idadeMax"
+                placeholder="Máx"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">País</label>
+              <select class="form-control" id="pais">
+                <option value="">Selecione...</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Chile">Chile</option>
+                <option value="Alemanha">Alemanha</option>
+                <option value="França">França</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Estado</label>
+              <select class="form-control" id="estado">
+                <option value="">Selecione...</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                <option value="Paraná">Paraná</option>
+                <option value="Santa Catarina">Santa Catarina</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Cidade</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cidade"
+                placeholder="Digite a cidade"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">CEP</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cep"
+                placeholder="Digite o CEP"
+              />
+            </div>
+
+            <div class="form-group tags-group">
+              <label class="form-label">Tags Especiais</label>
+              <div class="tags-input-container">
+                <div class="tags-display" id="tagsDisplay"></div>
+                <input
+                  type="text"
+                  class="form-control tags-input"
+                  id="tagsInput"
+                  placeholder="Digite uma tag e pressione Enter..."
+                />
+              </div>
+            </div>
+
+            <div class="form-group tags-condition-group">
+              <label class="form-label form-label--highlighted">
+                <i class="fas fa-filter"></i>
+                Condição das Tags
+              </label>
+              <select
+                class="form-control form-control--highlighted"
+                id="tagsCondition"
+              >
+                <option value="contains">Contém</option>
+                <option value="not-contains">Não contém</option>
+                <option value="equals">Igual a</option>
+                <option value="not-equals">Diferente de</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Grupos</label>
+              <select class="form-control" id="grupos">
+                <option value="">Selecione...</option>
+                <option value="Grupo A">Grupo A</option>
+                <option value="Grupo B">Grupo B</option>
+                <option value="Grupo C">Grupo C</option>
+                <option value="Grupo D">Grupo D</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Agente</label>
+              <select class="form-control" id="agente">
+                <option value="">Selecione...</option>
+                <option value="Maria Santos">Maria Santos</option>
+                <option value="João Silva">João Silva</option>
+                <option value="Carlos Costa">Carlos Costa</option>
+                <option value="Ana Oliveira">Ana Oliveira</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Status de Conversa</label>
+              <select class="form-control" id="status">
+                <option value="">Selecione...</option>
+                <option value="resolvida">Resolvida</option>
+                <option value="andamento">Andamento</option>
+                <option value="pausa">Pausa</option>
+                <option value="nova">Nova</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Pipe Stage</label>
+              <select class="form-control" id="pipeStage">
+                <option value="">Selecione...</option>
+                <option value="Lead">Lead</option>
+                <option value="Qualificado">Qualificado</option>
+                <option value="Proposta">Proposta</option>
+                <option value="Negociação">Negociação</option>
+                <option value="Fechado">Fechado</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="filter-actions">
+            <button type="button" class="btn btn--primary" id="visualizarAcoes">
+              <i class="fas fa-history"></i> Visualizar ações anteriores
+            </button>
+            <button type="button" class="btn btn--primary" id="aplicarFiltros">
+              <i class="fas fa-filter"></i> Aplicar filtros
+            </button>
+            <button type="button" class="btn btn--outline" id="limparFiltros">
+              <i class="fas fa-times"></i> Limpar filtros
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Ações em Massa (inicialmente oculta) -->
+      <div
+        class="card mass-actions-card"
+        id="massActionsCard"
+        style="display: none"
+      >
+        <div class="card__header">
+          <h2>Ações em Massa</h2>
+        </div>
+        <div class="card__body">
+          <div class="mass-actions-grid">
+            <div class="mass-action-item">
+              <div class="mass-action-card">
+                <i class="fas fa-user-circle"></i>
+                <span class="action-title">Trocar agente</span>
+                <select
+                  class="form-control action-select"
+                  id="novoAgente"
+                  onchange="contactManager.enableApplyButton()"
+                >
+                  >
+                  <option value="">Selecionar agente</option>
+                  <option value="Maria Santos">Maria Santos</option>
+                  <option value="João Silva">João Silva</option>
+                  <option value="Carlos Costa">Carlos Costa</option>
+                  <option value="Ana Oliveira">Ana Oliveira</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card">
+                <i class="fas fa-circle-notch"></i>
+                <span class="action-title">Trocar status</span>
+                <select
+                  class="form-control action-select"
+                  id="novoStatus"
+                  onchange="contactManager.enableApplyButton()"
+                >
+                  >
+                  <option value="">Selecionar status</option>
+                  <option value="resolvida">Resolvida</option>
+                  <option value="andamento">Andamento</option>
+                  <option value="pausa">Pausa</option>
+                  <option value="nova">Nova</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card">
+                <i class="fas fa-tasks"></i>
+                <span class="action-title">Pipe stage</span>
+                <select
+                  class="form-control action-select"
+                  id="novoPipeline"
+                  onchange="contactManager.enableApplyButton()"
+                >
+                  >
+                  <option value="">Selecionar lista</option>
+                  <option value="Lead">Lead</option>
+                  <option value="Qualificado">Qualificado</option>
+                  <option value="Proposta">Proposta</option>
+                  <option value="Negociação">Negociação</option>
+                  <option value="Fechado">Fechado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card message-card">
+                <i class="fas fa-comment"></i>
+                <span class="action-title">Mensagem em massa</span>
+                <button
+                  type="button"
+                  class="btn btn--schedule"
+                  onclick="contactManager.selectMessageAction('agendar')"
+                >
+                  Agendar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--send"
+                  onclick="contactManager.selectMessageAction('enviar')"
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card">
+                <i class="fas fa-tag"></i>
+                <span class="action-title">Adicionar tag</span>
+                <select
+                  class="form-control action-select"
+                  id="novaTag"
+                  onchange="contactManager.enableApplyButton()"
+                >
+                  >
+                  <option value="">Selecionar tag</option>
+                  <option value="VIP">VIP</option>
+                  <option value="Prospect">Prospect</option>
+                  <option value="Cliente">Cliente</option>
+                  <option value="Lead Frio">Lead Frio</option>
+                  <option value="Lead Quente">Lead Quente</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card">
+                <i class="fas fa-users"></i>
+                <span class="action-title">Adicionar ao grupo</span>
+                <select
+                  class="form-control action-select"
+                  id="novoGrupo"
+                  onchange="contactManager.enableApplyButton()"
+                >
+                  >
+                  <option value="">Selecionar grupo</option>
+                  <option value="Grupo A">Grupo A</option>
+                  <option value="Grupo B">Grupo B</option>
+                  <option value="Grupo C">Grupo C</option>
+                  <option value="Grupo D">Grupo D</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card download-card">
+                <i class="fas fa-download"></i>
+                <span class="action-title">Baixar CSV</span>
+                <button
+                  type="button"
+                  class="btn btn--download"
+                  onclick="contactManager.downloadCSV()"
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+
+            <div class="mass-action-item">
+              <div class="mass-action-card delete-card">
+                <i class="fas fa-trash"></i>
+                <span class="action-title">Excluir contatos selecionados</span>
+                <button
+                  type="button"
+                  class="btn btn--delete"
+                  onclick="contactManager.executeDeleteContacts()"
+                >
+                  Excluir
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="choose-action-section">
+            <button
+              type="button"
+              class="btn btn--choose-action"
+              id="aplicarAcaoMassa"
+              disabled
+            >
+              Aplicar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de Resultados -->
+      <div class="card">
+        <div class="card__header">
+          <h2>Resultados</h2>
+          <div class="results-header-actions">
+            <div class="selection-controls">
+              <button
+                type="button"
+                class="btn btn--sm btn--outline"
+                id="selectAll"
+              >
+                <i class="fas fa-check-square"></i> Selecionar todos
+              </button>
+              <button
+                type="button"
+                class="btn btn--sm btn--outline"
+                id="deselectAll"
+              >
+                <i class="fas fa-square"></i> Desmarcar todos
+              </button>
+              <span class="selection-count" id="selectionCount"
+                >0 selecionados</span
+              >
+            </div>
+            <div class="results-count" id="resultsCount">
+              0 contatos encontrados
+            </div>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="table-container">
+            <table class="results-table" id="resultsTable">
+              <thead>
+                <tr>
+                  <th class="checkbox-column">
+                    <input
+                      type="checkbox"
+                      id="selectAllCheckbox"
+                      onchange="contactManager.toggleSelectAll(this)"
+                    />
+                  </th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Agente</th>
+                  <th>Status</th>
+                  <th>Pipeline</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody">
+                <tr class="empty-state">
+                  <td colspan="7" class="text-center">
+                    <i class="fas fa-filter"></i><br />
+                    Aplique filtros para visualizar os contatos
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para Ações Anteriores -->
+    <div class="modal-overlay" id="previousActionsModal" style="display: none">
+      <div class="modal-content modal-content--large">
+        <div class="modal-header">
+          <h3>Ações Anteriores</h3>
+          <button
+            type="button"
+            class="modal-close"
+            onclick="contactManager.closePreviousActionsModal()"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="actions-filters">
+            <div class="filters-row">
+              <div class="form-group">
+                <label class="form-label">Período</label>
+                <select class="form-control" id="actionsPeriod">
+                  <option value="7">Últimos 7 dias</option>
+                  <option value="30" selected>Últimos 30 dias</option>
+                  <option value="90">Últimos 90 dias</option>
+                  <option value="365">Último ano</option>
+                  <option value="all">Todos os períodos</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tipo de Ação</label>
+                <select class="form-control" id="actionsType">
+                  <option value="all">Todas as ações</option>
+                  <option value="agent">Troca de agente</option>
+                  <option value="status">Troca de status</option>
+                  <option value="pipeline">Troca de pipeline</option>
+                  <option value="tag">Adição de tag</option>
+                  <option value="group">Adição ao grupo</option>
+                  <option value="message">Mensagem em massa</option>
+                  <option value="delete">Exclusão</option>
+                </select>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn--primary"
+                onclick="contactManager.filterPreviousActions()"
+              >
+                <i class="fas fa-filter"></i> Filtrar
+              </button>
+            </div>
+          </div>
+
+          <div class="actions-table-container">
+            <table class="actions-table">
+              <thead>
+                <tr>
+                  <th>Data/Hora</th>
+                  <th>Ação</th>
+                  <th>Contatos Afetados</th>
+                  <th>Usuário</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="actionsTableBody">
+                <!-- Dados serão carregados dinamicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast de Notificação -->
+    <div class="toast" id="toast" style="display: none">
+      <div class="toast-content">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message" id="toastMessage"></span>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
